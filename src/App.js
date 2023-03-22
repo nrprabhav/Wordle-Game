@@ -34,6 +34,7 @@ function App() {
       temp[data.index] = debouncedKey.toUpperCase();
       setData({ ...data, row1: temp, index: data.index + 1 });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey])
 
   return (
