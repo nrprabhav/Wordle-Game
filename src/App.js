@@ -6,6 +6,7 @@ import useDebounce from './utils/debounceHook';
 import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
+import Submit from './components/Submit';
 
 function App() {
   const [key, setKey] = useState({
@@ -44,8 +45,8 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey.timeStamp])
 
-  useEffect(() => {
-    if (data.index === 5) {
+  const checkEntry = () => {
+    if (data.index >= 5) {
         API.IsDictionaryWord(data.guessLetters[data.row].join(''))
           .then(res => {
             setData({ ...data, index: 0, row: data.row + 1 });
@@ -58,11 +59,12 @@ function App() {
           });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.index])
+  };
 
   return (
     <div className="container w-50">
       <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} />
+      <Submit clickHandler={checkEntry}/>
     </div>
   );
 }
