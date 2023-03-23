@@ -5,6 +5,7 @@ import WordlePanel from './components/WordlePanel/WordlePanel';
 import useDebounce from './utils/debounceHook';
 import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
+import API from "./utils/API.js";
 
 function App() {
   const [key, setKey] = useState("");
@@ -42,8 +43,14 @@ function App() {
 
   useEffect(() => {
     if (data.index === 5) {
-      CheckGuess(data);
-      setData({ ...data, index: 0, row: data.row + 1 })
+      API.IsDictionaryWord(data.row1.join(''))
+        .then(res => {
+          setData({ ...data, index: 0, row: data.row + 1 });
+          CheckGuess(data); ///Work from here
+        })
+        .catch(err => {setData({...data, row1: ["","","","",""], index: 0})});
+      //CheckGuess(data);
+      //setData({ ...data, index: 0, row: data.row + 1 })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.index])
