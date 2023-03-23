@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
-const useDebounce = (value, delay) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+const useDebounce = (value, delay, timeStamp) => {
+  const [debouncedValue, setDebouncedValue] = useState({
+    value: "",
+    timeStamp: 0
+  });
   useEffect(
     () => {
       const handler = setTimeout(() => {
+        console.log("DEBOUNCE");
         setDebouncedValue(value);
       }, delay);
       // Cancel the timeout if value or delay changes
@@ -13,7 +17,7 @@ const useDebounce = (value, delay) => {
       };
     },
     // Only call the effect if value or delay changes.
-    [value, delay]
+    [value, delay, timeStamp]
   );
 
   return debouncedValue;
