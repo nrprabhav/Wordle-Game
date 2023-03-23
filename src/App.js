@@ -46,7 +46,7 @@ function App() {
   }, [debouncedKey.timeStamp])
 
   const checkEntry = () => {
-    if (data.index === 5) {
+    if (data.index >= 5) {
         API.IsDictionaryWord(data.guessLetters[data.row].join(''))
           .then(res => {
             setData({ ...data, index: 0, row: data.row + 1 });
