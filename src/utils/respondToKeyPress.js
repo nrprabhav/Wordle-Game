@@ -12,7 +12,7 @@ const RespondToKeyPress = (data, key) => {
         }
     else if(key === "Backspace") {
         console.log(`Backspace: ${key}`);
-        data.index -= 1;
+        data.index = data.index > 0 ? data.index-1 : data.index;
         data.guessLetters[data.row][data.index]="";
     }
     return data;
