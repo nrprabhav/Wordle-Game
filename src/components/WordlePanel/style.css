@@ -1,0 +1,6 @@
+.z-index-base {
+    position: absolute;
+    z-index: 2;
+    top: 250px;
+    left: 10%;
+}

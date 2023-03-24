@@ -4,20 +4,28 @@ import "./style.css"
 
 function WordlePanel(props) {
     return (
-        <div class="container text-center">
+        <div class="container text-center z-index-base">
             <div class="row align-items-start">
                 <div class="col p-0">
                     <LetterButtonRow data={props.row1} />
                 </div>
+            </div>
+            <div class="row align-items-start">
                 <div class="col p-0">
                     <LetterButtonRow data={props.row2} />
                 </div>
+            </div>
+            <div class="row align-items-start">
                 <div class="col p-0">
                     <LetterButtonRow data={props.row3} />
                 </div>
+            </div>
+            <div class="row align-items-start">
                 <div class="col p-0">
                     <LetterButtonRow data={props.row4} />
                 </div>
+            </div>
+            <div class="row align-items-start">
                 <div class="col p-0">
                     <LetterButtonRow data={props.row5} />
                 </div>

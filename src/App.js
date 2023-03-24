@@ -6,6 +6,10 @@ import useDebounce from './utils/debounceHook';
 import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 
+// whiteboard component
+import Whiteboard from './components/Whiteboard';
+import WhiteboardToggle from './components/WhiteboardToggle';
+
 function App() {
   const [key, setKey] = useState("");
   const [data, setData] = useState({
@@ -25,7 +29,7 @@ function App() {
     // Listen to a key press anywhere on the window
     window.addEventListener('keydown', e => {
       console.log(e);
-      if((e.which>=65 && e.which<=90) || e.which === 8){
+      if ((e.which >= 65 && e.which <= 90) || e.which === 8) {
         setKey(e.key);
       }
     });
@@ -34,7 +38,7 @@ function App() {
   useEffect(() => {
     //What should you do if the debounced value of the keypress changes.
     console.log(`Key Pressed: ${debouncedKey}; Index: ${data.index}`);
-    let temp = RespondToKeyPress({...data},debouncedKey);
+    let temp = RespondToKeyPress({ ...data }, debouncedKey);
     console.log(temp);
     setData(temp);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,11 +52,34 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.index])
 
-  return (
+  return (<div>
+    <WhiteboardToggle />
     <div className="container w-50">
       <WordlePanel row1={data.row1} row2={data.row2} row3={data.row3} row4={data.row4} row5={data.row5} />
     </div>
-  );
+    <h3 className='wordle-bg-rotate'>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>W</button>
+      <button type="button" class="wordle-bg-char btn btn-secondary" disabled>A</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>R</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>D</button>
+      <button type="button" class="wordle-bg-char btn btn-warning" disabled>E</button>
+      <button type="button" class="wordle-bg-char btn btn-secondary" disabled>N</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&</button>
+      <br/>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>W</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>O</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>R</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>D</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>L</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>E</button>
+    </h3>
+    
+    <Whiteboard />
+  </div>);
 }
 
 export default App;
