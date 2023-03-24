@@ -1,20 +1,19 @@
 import IsDictionaryWord from "./isDictionaryWord";
 
-const CheckGuess = (data) => {
+const CheckGuess = (data,solution) => {
     console.log("CHECK");
-    IsDictionaryWord(data.row1);
-    /*****************************
-     * Is the word a dictionary word?
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+    console.log(`SOLUTION: ${solution}`);
+    
+    let temp = [...solution];
+    let guess = data.guessLetters[data.row];
+    console.log("Solution: " + temp);
+    console.log("Guess: " + guess);
 
+    let diff=[false,false,false,false,false];
+    for(let i = 0; i < 5; i++){
+        diff[i] = (temp[i] === guess[i]) ? true : false;
+    }
+    console.log("Diff: " + diff);
     /***************************
      * Is the word the guessed word?
      * 
