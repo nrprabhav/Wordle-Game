@@ -7,19 +7,19 @@ function WordlePanel(props) {
         <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col">
-                    <LetterButtonRow data={props.row1} />
+                    <LetterButtonRow data={props.row1} color={props.row1Color} />
                 </div>
                 <div class="col">
-                    <LetterButtonRow data={props.row2} />
+                    <LetterButtonRow data={props.row2} color={props.row2Color} />
                 </div>
                 <div class="col">
-                    <LetterButtonRow data={props.row3} />
+                    <LetterButtonRow data={props.row3} color={props.row3Color}  />
                 </div>
                 <div class="col">
-                    <LetterButtonRow data={props.row4} />
+                    <LetterButtonRow data={props.row4}  color={props.row4Color} />
                 </div>
                 <div class="col">
-                    <LetterButtonRow data={props.row5} />
+                    <LetterButtonRow data={props.row5}  color={props.row5Color} />
                 </div>
             </div>
         </div>

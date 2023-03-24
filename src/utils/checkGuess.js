@@ -1,6 +1,6 @@
 import IsDictionaryWord from "./isDictionaryWord";
 
-const CheckGuess = (data,solution) => {
+const CheckGuess = (data,solution,letterColor) => {
     console.log("CHECK");
     console.log(`SOLUTION: ${solution}`);
     
@@ -11,9 +11,11 @@ const CheckGuess = (data,solution) => {
 
     let diff=[false,false,false,false,false];
     for(let i = 0; i < 5; i++){
-        diff[i] = (temp[i] === guess[i]) ? true : false;
+        diff[i] = (temp[i] === guess[i]) ? "green" : "red";
     }
     console.log("Diff: " + diff);
+    letterColor[data.row]=diff;
+    return letterColor;
     /***************************
      * Is the word the guessed word?
      * 

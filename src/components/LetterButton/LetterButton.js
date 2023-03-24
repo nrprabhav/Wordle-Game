@@ -3,7 +3,7 @@ import "./style.css";
 
 function LetterButton(props) {
     return (
-        <li className="list-group-item">{props.data}</li>
+        <li className="list-group-item" style={{ backgroundColor: props.color}}>{props.data}</li>
     )
 }
 

@@ -7,7 +7,7 @@ import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
 import Submit from './components/Submit';
-import axios from 'axios';
+//import axios from 'axios';
 
 function App() {
   const [key, setKey] = useState({
@@ -23,6 +23,14 @@ function App() {
     index: 0,
     row: 0
   });
+  const [letterColor, setLetterColor] = useState([
+                  ["white", "white", "white", "white", "white"],
+                  ["white", "white", "white", "white", "white"],
+                  ["white", "white", "white", "white", "white"],
+                  ["white", "white", "white", "white", "white"],
+                  ["white", "white", "white", "white", "white"]
+                ]
+  );
   const [solution, setSolution] = useState("GAMES");
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
@@ -75,7 +83,7 @@ function App() {
         API.IsDictionaryWord(data.guessLetters[data.row].join(''))
           .then(res => {
             setData({ ...data, index: 0, row: data.row + 1 });
-            CheckGuess(data, solution);
+            setLetterColor(CheckGuess(data, solution, letterColor));
           })
           .catch(err => { 
             let temp = data.guessLetters;
@@ -87,8 +95,9 @@ function App() {
   };
 
   return (
-    <div className="container w-50">
-      <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} />
+    <div className="container w-50 d-flex flex-column">
+      <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]}
+      row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} />
       <Submit clickHandler={checkEntry}/>
     </div>
   );
