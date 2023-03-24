@@ -51,6 +51,7 @@ function App() {
   return (
     <div className="container w-50">
       <WordlePanel row1={data.row1} row2={data.row2} row3={data.row3} row4={data.row4} row5={data.row5} />
+      < CheckGuess />
     </div>
   );
 }
