@@ -8,6 +8,10 @@ import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
 import Submit from './components/Submit';
 
+// whiteboard component
+import Whiteboard from './components/Whiteboard';
+import WhiteboardToggle from './components/WhiteboardToggle';
+
 function App() {
   const [key, setKey] = useState({
     value: "",
@@ -61,12 +65,35 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
-  return (
+  return (<div>
+    <WhiteboardToggle />
     <div className="container w-50">
       <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} />
       <Submit clickHandler={checkEntry}/>
     </div>
-  );
+    <h3 className='wordle-bg-rotate'>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>W</button>
+      <button type="button" class="wordle-bg-char btn btn-secondary" disabled>A</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>R</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>D</button>
+      <button type="button" class="wordle-bg-char btn btn-warning" disabled>E</button>
+      <button type="button" class="wordle-bg-char btn btn-secondary" disabled>N</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&</button>
+      <br/>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>W</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>O</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>R</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>D</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>L</button>
+      <button type="button" class="wordle-bg-char btn btn-success" disabled>E</button>
+    </h3>
+    
+    <Whiteboard />
+  </div>);
 }
 
 export default App;
