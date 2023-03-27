@@ -21,6 +21,9 @@ function WordlePanel(props) {
                 <div class="col">
                     <LetterButtonRow data={props.row5}  color={props.row5Color} />
                 </div>
+                <div class="col">
+                    <LetterButtonRow data={props.row6}  color={props.row6Color} />
+                </div>
             </div>
         </div>
 
