@@ -8,7 +8,7 @@ const useDebounce = (value, delay, timeStamp) => {
   useEffect(
     () => {
       const handler = setTimeout(() => {
-        console.log("DEBOUNCE");
+        //console.log("DEBOUNCE");
         setDebouncedValue(value);
       }, delay);
       // Cancel the timeout if value or delay changes

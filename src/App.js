@@ -33,6 +33,15 @@ function App() {
     ["white", "white", "white", "white", "white"]
   ]
   );
+  const [filled, setFilled] = useState([
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""]
+  ]
+  );
   const [solution, setSolution] = useState("GAMES");
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
@@ -63,7 +72,6 @@ function App() {
   useEffect(() => {
     // Listen to a key press anywhere on the window
     window.addEventListener('keydown', e => {
-      console.log(e);
       if ((e.which >= 65 && e.which <= 90) || e.which === 8) {
         // Respond if the key is a letter press or a backspace
         setKey({ value: e.key, timeStamp: e.timeStamp });
@@ -73,10 +81,11 @@ function App() {
 
   useEffect(() => {
     //What should you do if the debounced value of the keypress changes.
-    console.log(`Key Pressed: ${debouncedKey}; Index: ${data.index}`);
     let temp = RespondToKeyPress({ ...data }, debouncedKey.value);
-    console.log(temp);
     setData(temp);
+    let tempFilled = filled.slice();
+    tempFilled[data.row][data.index]="filled";
+    setFilled(tempFilled);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey.timeStamp])
 
@@ -96,15 +105,15 @@ function App() {
       for (let i = 0; i < 5; i++) {
         if (letterColor[data.row][i] !== "green") {
           doneFlg = false;
-          console.log("CONTINUE");
         }
       }
-      console.log(data.row);
       if (doneFlg) {
         console.log("YOU WON");
-        window.location.reload();
+        //setData({...data, filled: "filled"});
+        //window.location.reload();
       } else if (data.row >= 5) {
         console.log("YOU LOST");
+        //setData({...data, filled: "filled"});
       }
 
     }
@@ -115,7 +124,8 @@ function App() {
   return (
     <div className="container w-50 d-flex flex-column">
       <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
-        row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}/>
+        row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]} 
+        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]}/>
       <Submit clickHandler={checkEntry} />
     </div>
   );
