@@ -23,7 +23,7 @@ function App() {
     ["", "", "", "", ""],
     ["", "", "", "", ""],
     ["", "", "", "", ""]],
-    index: 0,
+    index: -1,
     row: 0
   });
   const [letterColor, setLetterColor] = useState([
