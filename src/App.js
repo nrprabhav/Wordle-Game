@@ -7,6 +7,8 @@ import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
 import Submit from './components/Submit';
+//import Modal from './components/Modal/Modal';
+import GameOverModal from './components/Modal/Modal';
 //import axios from 'axios';
 
 function App() {
@@ -43,6 +45,10 @@ function App() {
   ]
   );
   const [solution, setSolution] = useState("GAMES");
+  const [showModal, setShowModal] = useState({
+    show: false,
+    isCorrect: false
+  });
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
   // Uncomment when done
@@ -109,10 +115,17 @@ function App() {
       }
       if (doneFlg) {
         console.log("YOU WON");
+        setTimeout(function() {
+          setShowModal({show: true, isCorrect: true});
+        }, 2500) 
+        console.log(showModal);
         //setData({...data, filled: "filled"});
         //window.location.reload();
       } else if (data.row >= 5) {
         console.log("YOU LOST");
+        setTimeout(function() {
+          setShowModal({show: true, isCorrect: false});
+        }, 2500) 
         //setData({...data, filled: "filled"});
       }
 
@@ -123,12 +136,15 @@ function App() {
 
   return (
     <div className="container w-50 d-flex flex-column">
-      <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
+      {<WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
         row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]} 
-        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]}/>
-      <Submit clickHandler={checkEntry} />
+        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]}/>}
+      {<Submit clickHandler={checkEntry} />}
+      {showModal.show && <GameOverModal show={showModal.show}
+        solution={solution} turn={data.row} isCorrect={showModal.isCorrect} onHide={() => window.location.reload()}/>}
     </div>
   );
 }
 
 export default App;
+//setShowModal({show: false, isCorrect: true})

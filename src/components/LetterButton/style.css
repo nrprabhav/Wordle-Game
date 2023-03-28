@@ -2,7 +2,7 @@
     width: 70px;
     height: 70px;
     font-size: xx-large;
-    border: 2px solid black;
+    border-left-width: 1px !important;
     margin: 5px;
   }
 
@@ -12,7 +12,9 @@
     justify-content: center;
   }
 
-
+  .list-group-item > div.filled {
+    animation: bounce 0.2s ease-in-out forwards;
+  }
  
   .letter-button-row > li.green {
     --background: #5ac85a;
@@ -65,5 +67,19 @@
     background: var(--background);
     border-color: var(--border-color);
     color: #eee;
+  }
+}
+
+@keyframes bounce {
+  0% { 
+    transform: scale(1);
+    border-color: #ddd;
+  }
+  50% { 
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+    border-color: #333;
   }
 }
