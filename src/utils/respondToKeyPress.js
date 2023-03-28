@@ -1,7 +1,7 @@
 
 const RespondToKeyPress = (data, key, filled) => {
 
-    console.log("RESPOND TO KEY PRESS:" + key);
+    //console.log("RESPOND TO KEY PRESS:" + key);
 
     function isCharacterALetter(char) {
         return (/[a-zA-Z]/).test(char)

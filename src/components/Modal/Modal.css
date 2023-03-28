@@ -8,9 +8,18 @@
   }
 
   .modal .solution {
-    color: #ff004c;
-    font-weight: bold;
-    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: large;
     text-transform: uppercase;
     letter-spacing: 1px;
+  }
+
+  .span-solution {
+    background-color: green;
+    margin: 2px;
+    padding: 2px;
+    width: 30px;
+    border-radius: 1px;
   }

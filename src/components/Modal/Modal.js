@@ -11,17 +11,22 @@ function GameOverModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header className='d-flex justify-content-center'>
           <Modal.Title id="contained-modal-title-vcenter">
-            You won!
+            <p className='display-1 mx-auto'>You won!</p>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className="solution">{props.solution}</p>
-          <p>You found the solution in {props.turn} guesses :)</p>
+        <p className="text-center">The solution is:</p>
+        <p className="solution text-center">
+          {props.solution.split("").map(l => 
+            <span className='span-solution'>{l}</span>
+          )}
+          </p>
+          <p className="text-center">You found the solution in {props.turn} guesses :)</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+        <Modal.Footer className='justify-content-center'>
+          <Button onClick={props.onHide} variant="outline-dark">Close</Button>
         </Modal.Footer>
       </Modal>)}
       {!props.isCorrect && (<Modal
@@ -30,17 +35,22 @@ function GameOverModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header className='d-flex justify-content-center'>
           <Modal.Title id="contained-modal-title-vcenter">
-            Never Mind
+            <p className='display-1 mx-auto'>Never Mind</p>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className="solution">{props.solution}</p>
-          <p>Better luck next time :)</p>
+        <p className="text-center">The solution is:</p>
+        <p className="solution text-center">
+          {props.solution.split("").map(l => 
+            <span className='span-solution'>{l}</span>
+          )}
+          </p>
+          <p className="text-center">Better luck next time!</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+        <Modal.Footer className='justify-content-center'>
+          <Button onClick={props.onHide} variant="outline-dark">Close</Button>
         </Modal.Footer>
       </Modal>)}
     </div>

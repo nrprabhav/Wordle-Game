@@ -9,6 +9,8 @@ import API from "./utils/API.js";
 import Submit from './components/Submit/Submit';
 import Keypad from './components/Keypad/Keypad';
 import GameOverModal from './components/Modal/Modal';
+import TopPanel from './components/TopPanel';
+import InstructionModal from './components/InstructionModal/InstructionModal';
 //import axios from 'axios';
 
 function App() {
@@ -49,6 +51,7 @@ function App() {
     show: false,
     isCorrect: false
   });
+  const [showInstructionModal,setShowInstructionModal] = useState(true);
   const [usedKeys, setUsedKeys] = useState({});
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
@@ -151,8 +154,10 @@ function App() {
   });
 
   return (
-    <div className="container d-flex flex-column">
-      <h1 className='display-1'>Wordle</h1>
+    <div>
+      <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)}/>
+      <div className="container d-flex flex-column">
+      {/*<h1 className='display-1'>Wordle</h1>*/}
       <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
         row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
         row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]} />
@@ -160,7 +165,8 @@ function App() {
       <Submit clickHandler={checkEntry} backSpace={() => setKey({value:"Backspace", timeStamp: 0})}/>
       {showModal.show && <GameOverModal show={showModal.show}
         solution={solution} turn={data.row} isCorrect={showModal.isCorrect} onHide={() => window.location.reload()} />}
-    </div>
+      {showInstructionModal && <InstructionModal show={showInstructionModal} onHide={() => setShowInstructionModal(false)}/>}
+    </div></div>
   );
 }
 
