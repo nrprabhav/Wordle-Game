@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
-import KeypadClick from "../utils/KeypadClick";
+import "./Keypad.css";
 
-function Keypad() {
+function Keypad(props) {
     const [letters, setLetters] = useState(null);
 
     useEffect(() => {
@@ -42,13 +42,13 @@ function Keypad() {
     }, [])
 
     return (
-        <ButtonGroup onClick={KeypadClick}>
+        <div className="keypad-container" onClick={props.KeypadClick}>
             {letters && letters.map((l) => {
                 return (
-                    <Button variant="outline-dark" value={l.key} >{l.key}</Button>
+                    <Button className="keypad-keys" variant="outline-dark" value={l.key} >{l.key}</Button>
                 )
             })}
-        </ButtonGroup>
+        </div>
     )
 }
 

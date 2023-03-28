@@ -1,6 +1,6 @@
+//import {setKey} from "../App"
+// const KeypadClick = ((e) => {
+//     setKey({key: e.target.value, timeStamp: e.timeStamp});
+// });
 
-const KeypadClick = ((e) => {
-    console.log(e.target.value);
-});
-
-export default KeypadClick;
+// export default KeypadClick;
