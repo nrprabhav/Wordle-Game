@@ -7,7 +7,7 @@ import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
 import Submit from './components/Submit';
-//import Modal from './components/Modal/Modal';
+import Keypad from './components/Keypad';
 import GameOverModal from './components/Modal/Modal';
 //import axios from 'axios';
 
@@ -140,6 +140,7 @@ function App() {
         row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]} 
         row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]}/>}
       {<Submit clickHandler={checkEntry} />}
+      <Keypad />
       {showModal.show && <GameOverModal show={showModal.show}
         solution={solution} turn={data.row} isCorrect={showModal.isCorrect} onHide={() => window.location.reload()}/>}
     </div>
