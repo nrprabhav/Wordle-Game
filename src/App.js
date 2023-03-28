@@ -6,7 +6,7 @@ import useDebounce from './utils/debounceHook';
 import CheckGuess from './utils/checkGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
-import Submit from './components/Submit';
+import Submit from './components/Submit/Submit';
 import Keypad from './components/Keypad/Keypad';
 import GameOverModal from './components/Modal/Modal';
 //import axios from 'axios';
@@ -110,7 +110,9 @@ function App() {
           setData({ ...data, index: 0, row: data.row + 1 });
           let temp = CheckGuess(data, solution, letterColor, usedKeys);
           setLetterColor(temp.letterColor);
-          setUsedKeys(temp.newKeys);
+          setTimeout(function () {
+            setUsedKeys(temp.newKeys);
+          }, 2500);
         })
         .catch(err => {
           let temp = data.guessLetters;
@@ -149,12 +151,13 @@ function App() {
   });
 
   return (
-    <div className="container w-50 d-flex flex-column">
-      {<WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
+    <div className="container d-flex flex-column">
+      <h1 className='display-1'>Wordle</h1>
+      <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
         row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
-        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]} />}
-      {<Submit clickHandler={checkEntry} />}
+        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]} />
       <Keypad usedKeys={usedKeys} KeypadClick={(e) => KeypadClick(e)} />
+      <Submit clickHandler={checkEntry} backSpace={() => setKey({value:"Backspace", timeStamp: 0})}/>
       {showModal.show && <GameOverModal show={showModal.show}
         solution={solution} turn={data.row} isCorrect={showModal.isCorrect} onHide={() => window.location.reload()} />}
     </div>

@@ -1,14 +1,20 @@
 .keypad-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     margin: 10px;
-    width: 400px;
-    
+    max-width: 500px;
 }
 
 .keypad-keys {
     margin: 2px;
-    font-size: larger;
+    font-size: x-large;
+    font-weight: bold;
+    width: 50px;
 }
+
+@media screen and (max-width: 500)  { 
+    .keypad-keys {
+        margin: 2px;
+        font-size: large !important;
+        width: 20px;
+    }
+    
+  }

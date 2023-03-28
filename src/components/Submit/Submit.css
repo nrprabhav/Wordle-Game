@@ -1,0 +1,11 @@
+.btn {
+    margin: 2px;
+    width: 40%;
+}
+
+.specialBtn{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

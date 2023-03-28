@@ -41,15 +41,15 @@ function Keypad(props) {
         if(key in usedKeys) {
             return( usedKeys[key]);
         } else {
-            return "outline-dark";
+            return "light";
         }
     }
 
     return (
-        <div className="keypad-container" onClick={props.KeypadClick}>
+        <div className="keypad-container d-flex flex-wrap" onClick={props.KeypadClick}>
             {letters && letters.map((l) => {
                 return (
-                    <Button className="keypad-keys" variant={variantName(props.usedKeys, l.key)} value={l.key} >{l.key}</Button>
+                    <Button className="keypad-keys flex-grow-1" variant={variantName(props.usedKeys, l.key)} value={l.key} >{l.key}</Button>
                 )
             })}
         </div>
