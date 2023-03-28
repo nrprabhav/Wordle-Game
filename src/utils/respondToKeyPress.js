@@ -8,37 +8,14 @@ const RespondToKeyPress = (data, key) => {
     };
 
     if (isCharacterALetter(key) && key !== 'Backspace') {
-        switch (data.row) {
-            case 1:
-                data.row1[data.index++] = key.toUpperCase();
-                break;
-            case 2:
-                data.row2[data.index++] = key.toUpperCase();
-                break;
-            case 3:
-                data.row3[data.index++] = key.toUpperCase();
-                break;
-            case 4:
-                data.row4[data.index++] = key.toUpperCase();
-                break;
-            case 5:
-                data.row5[data.index++] = key.toUpperCase();
-                break;
-            default:
-                break;
+        if (data.index < 5) {
+            data.guessLetters[data.row][data.index++] = key.toUpperCase();
         }
-    } else if(key === "Backspace") {
+    }
+    else if (key === "Backspace") {
         console.log(`Backspace: ${key}`);
-        /*********************************
-         * Write Code to implement backspace
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
+        data.index = data.index > 0 ? data.index - 1 : data.index;
+        data.guessLetters[data.row][data.index] = "";
     }
     return data;
 }

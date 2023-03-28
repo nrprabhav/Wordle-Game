@@ -1,18 +1,19 @@
 import IsDictionaryWord from "./isDictionaryWord";
 
 const CheckGuess = ({ isGuessed, guess, word, data}) => {
+
   console.log("CHECK");
-  IsDictionaryWord(data.row1);
+  //IsDictionaryWord(data.row1);
   // Check if the guess is a valid dictionary word
-  IsDictionaryWord(data.row1);
+  //IsDictionaryWord(data.row1);
   // Highlight letters which are wrong or right
   const letterColors = guess.split('').map((letter, i) => {
     if (!isGuessed) {
       return 'bg-black';
     } else if (letter === word[i]) {
-      return 'bg-green-400';
+      return 'bg-success';
     } else if (word.includes(letter)) {
-      return 'bg-yellow-400';
+      return 'bg-warning';
     } else {
       return 'bg-black';
     }
