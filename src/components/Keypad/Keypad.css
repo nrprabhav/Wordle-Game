@@ -4,9 +4,11 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
-    max-width: 500px;
+    width: 400px;
+    
 }
 
 .keypad-keys {
     margin: 2px;
+    font-size: larger;
 }

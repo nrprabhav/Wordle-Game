@@ -23,7 +23,7 @@ function App() {
     ["", "", "", "", ""],
     ["", "", "", "", ""],
     ["", "", "", "", ""]],
-    index: -1,
+    index: 0,
     row: 0
   });
   const [letterColor, setLetterColor] = useState([
@@ -49,6 +49,7 @@ function App() {
     show: false,
     isCorrect: false
   });
+  const [usedKeys, setUsedKeys] = useState({});
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
   // Uncomment when done
@@ -78,7 +79,7 @@ function App() {
   useEffect(() => {
     // Listen to a key press anywhere on the window
     window.addEventListener('keydown', e => {
-      if ((e.which >= 65 && e.which <= 90) || e.which === 8) {
+      if ((e.which >= 65 && e.which <= 90) || e.which === 8 || e.which === 13) {
         // Respond if the key is a letter press or a backspace
         setKey({ value: e.key, timeStamp: e.timeStamp });
       }
@@ -87,20 +88,29 @@ function App() {
 
   useEffect(() => {
     //What should you do if the debounced value of the keypress changes.
-    let temp = RespondToKeyPress({ ...data }, debouncedKey.value);
-    setData(temp);
-    let tempFilled = filled.slice();
-    tempFilled[data.row][data.index]="filled";
-    setFilled(tempFilled);
+    console.log(debouncedKey.value);
+    if (debouncedKey.value !== "Enter") {
+      
+      let temp = RespondToKeyPress({ ...data }, debouncedKey.value, [...filled]);
+      setData(temp.data);
+      //let tempFilled = filled.slice();
+      //tempFilled[data.row][data.index]="filled";
+      setFilled(temp.filled);
+    } else {
+      checkEntry();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey.timeStamp])
 
   const checkEntry = async () => {
+    console.log(data.index);
     if (data.index >= 5) {
       await API.IsDictionaryWord(data.guessLetters[data.row].join(''))
         .then(res => {
           setData({ ...data, index: 0, row: data.row + 1 });
-          setLetterColor(CheckGuess(data, solution, letterColor));
+          let temp = CheckGuess(data, solution, letterColor, usedKeys);
+          setLetterColor(temp.letterColor);
+          setUsedKeys(temp.newKeys);
         })
         .catch(err => {
           let temp = data.guessLetters;
@@ -115,17 +125,17 @@ function App() {
       }
       if (doneFlg) {
         console.log("YOU WON");
-        setTimeout(function() {
-          setShowModal({show: true, isCorrect: true});
-        }, 2500) 
+        setTimeout(function () {
+          setShowModal({ show: true, isCorrect: true });
+        }, 2500)
         console.log(showModal);
         //setData({...data, filled: "filled"});
         //window.location.reload();
       } else if (data.row >= 5) {
         console.log("YOU LOST");
-        setTimeout(function() {
-          setShowModal({show: true, isCorrect: false});
-        }, 2500) 
+        setTimeout(function () {
+          setShowModal({ show: true, isCorrect: false });
+        }, 2500)
         //setData({...data, filled: "filled"});
       }
 
@@ -135,18 +145,18 @@ function App() {
 
   const KeypadClick = ((e) => {
     //console.log(e.target.value);
-    setKey({value: e.target.value, timeStamp: e.timeStamp});
+    setKey({ value: e.target.value, timeStamp: e.timeStamp });
   });
 
   return (
     <div className="container w-50 d-flex flex-column">
       {<WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
-        row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]} 
-        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]}/>}
+        row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
+        row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]} />}
       {<Submit clickHandler={checkEntry} />}
-      <Keypad KeypadClick={(e)=> KeypadClick(e)}/>
+      <Keypad usedKeys={usedKeys} KeypadClick={(e) => KeypadClick(e)} />
       {showModal.show && <GameOverModal show={showModal.show}
-        solution={solution} turn={data.row} isCorrect={showModal.isCorrect} onHide={() => window.location.reload()}/>}
+        solution={solution} turn={data.row} isCorrect={showModal.isCorrect} onHide={() => window.location.reload()} />}
     </div>
   );
 }

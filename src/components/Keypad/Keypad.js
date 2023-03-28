@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./Keypad.css";
 
 function Keypad(props) {
@@ -7,45 +7,49 @@ function Keypad(props) {
 
     useEffect(() => {
         setLetters( [
-            {"key": "a"},
-            {"key": "b"},
-            {"key": "c"},
-            {"key": "d"},
-            {"key": "e"},
-            {"key": "f"},
-            {"key": "g"},
-            {"key": "h"},
-            {"key": "i"},
-            {"key": "j"},
-            {"key": "k"},
-            {"key": "l"},
-            {"key": "m"},
-            {"key": "n"},
-            {"key": "o"},
-            {"key": "p"},
-            {"key": "q"},
-            {"key": "r"},
-            {"key": "s"},
-            {"key": "t"},
-            {"key": "u"},
-            {"key": "v"},
-            {"key": "w"},
-            {"key": "x"},
-            {"key": "y"},
-            {"key": "z"}
+            {"key": "A"},
+            {"key": "B"},
+            {"key": "C"},
+            {"key": "D"},
+            {"key": "E"},
+            {"key": "F"},
+            {"key": "G"},
+            {"key": "H"},
+            {"key": "I"},
+            {"key": "J"},
+            {"key": "K"},
+            {"key": "L"},
+            {"key": "M"},
+            {"key": "N"},
+            {"key": "O"},
+            {"key": "P"},
+            {"key": "Q"},
+            {"key": "R"},
+            {"key": "S"},
+            {"key": "T"},
+            {"key": "U"},
+            {"key": "V"},
+            {"key": "W"},
+            {"key": "X"},
+            {"key": "Y"},
+            {"key": "Z"}
           ])
-        // fetch('./data/db.json/letters')
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         setLetters(json)
-        //     })
-    }, [])
+    }, []);
+
+    const variantName = (usedKeys,key) => {
+        //console.log(key, ": ", usedKeys[key]);
+        if(key in usedKeys) {
+            return( usedKeys[key]);
+        } else {
+            return "outline-dark";
+        }
+    }
 
     return (
         <div className="keypad-container" onClick={props.KeypadClick}>
             {letters && letters.map((l) => {
                 return (
-                    <Button className="keypad-keys" variant="outline-dark" value={l.key} >{l.key}</Button>
+                    <Button className="keypad-keys" variant={variantName(props.usedKeys, l.key)} value={l.key} >{l.key}</Button>
                 )
             })}
         </div>
