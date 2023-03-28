@@ -51,7 +51,7 @@ function App() {
     show: false,
     isCorrect: false
   });
-  const [showInstructionModal,setShowInstructionModal] = useState(true);
+  const [showInstructionModal,setShowInstructionModal] = useState(false);
   const [usedKeys, setUsedKeys] = useState({});
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
