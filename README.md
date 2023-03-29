@@ -1,70 +1,236 @@
-# Getting Started with Create React App
+
+<a name="readme-top"></a>
+[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url]
+
+
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/nrprabhav/game-player-project">
+    <img src="/assets/game-logo.png" alt="Warden and wordle Logo">
+  </a>
+
+<h3 align="center">Word game</h3>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+  <p align="center">
+    A word game where you have to guess the five-letter word
+    <br />
+    <a href="https://github.com/nrprabhav/wordle-game"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/nrprabhav/wordle-game">View Demo</a>
+    ·
+    <a href="https://github.com/nrprabhav/wordle-game">Report Bug</a>
+    ·
+    <a href="https://github.com/nrprabhav/wordle-game">Request Feature</a>
+  </p>
+</div>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#features-of-the-page">Features of the Page</a></li>
+    <li><a href="#future-work">Future Work</a></li>
+    <li><a href="#contributions">Contributions</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-### `npm run build`
+(insert gif of final app)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app allows user to use the on screen keyboard to input their guesses for the correct word.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+* [![React][React.com]][React-url]
+* [![Javascript][Javascript.com]][Javascript-url]
+* [![Css3][Css3.com]][Css3-url]
+* [![Node.js][Nodejs.com]][Nodejs-url]
+* [![HTML][html.com]][html-url]
+* [Axios](https://www.axios.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### New packages:
+[Excalidraw](https://excalidraw.com/)
+[Wordle API](https://wordle-answers-solutions.p.rapidapi.com/)
+[Free Dictionary API](https://dictionaryapi.dev/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- Features of the Page -->
+### Features of the Page
+1. The app allows users to use an on screen keyboard to input letters to guess the correct word
+2. There are animations and diffferent colours for the letters
+3. A toggle button will show a whiteboard for users to write notes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- USAGE EXAMPLES -->
+## Usage
 
-### Code Splitting
+#### Homepage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![homepage-screenshot](...)
 
-### Analyzing the Bundle Size
+#### Whiteboard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Use the toggle button on the left top to open it!
+   ![whiteboard-toggle-off](./READMEAssets/whiteboard-toggle-off.png)
+   or close it!
+   ![whiteboard-toggle-on](./READMEAssets/whiteboard-toggle-on.png)
+2. The initial area are divided into four areas. To add words on anywhere of the whiteboard, you could choose `letter button` in the top toolbar and tap anywhere you want on the whiteboard to insert a word or a piece of note. To delete the word, use the `eraser button` (You could erase any contents on the whiteboard, take care of that).
+   ![whiteboard-insert-word](./READMEAssets/whiteboard-insert-word.png)
+   To change color, tap the word then drag your screen down, all the attributes lie the bottom toolbar, try it!
+   ![whiteboard-set-word-color](./READMEAssets/whiteboard-set-word-color.png)
+   (If you find the bottom toolbar take up too much area of your whiteboard, click the <span>&#9776;</span> button to hide attributes setting.)
+3. If you want to add more contents on the whiteboard, tap the `hand button` on the right toolbar, drag the whiteboard and add more notes on the spare space. Also, after moving to a spare space, the initial four areas could be adjusted when you tap on them.
+4. Don't tap the `update scene` button and `reset scene` button on the top of whiteboard, or your notes will disappear. Before that, you should copy your whiteboard or save all the contents like this:
+   ![whiteboard-save](./READMEAssets/whiteboard-save.png)
+   For example, export the whiteboard as a png file:
+   ![whiteboard-export](./READMEAssets/whiteboard-export.png)
+5. Then you could try `update scene` button and `reset scene` button. I hide an egg there, which could help you work out wordle quickly!
+6. Interest is the best teacher, there are more functions on the whiteboard you could try, like the `grid mode`. Go try it!
+7. FAQ of whiteboard:
+   * > Q: I am on my phone, and I opened the whiteboard, I would like to go back, but the screen cannot be dragged to the top?
+   * A: Hold your finger on any one toolbar, then drag it! Yes, I mean the bottom toolbar, the right toolbar and the top toolbar!
+   * > Q: I am on my phone, are the whiteboard contents also responsive on my small screen?
+   * A: Whiteboard contents are not responsive, so you could use `hand button` on the right toolbar to drag your whiteboard, or check `view mode` on the top of whiteboard.
+   * > Q: Zen mode? I don't think it is different with "normal mode".
+   * A: Everyone has different state of mind, and "zen" also varies from people. Now zen mode is same as "normal" mode, and it is more or less a self-mesmerizing button. If you have some ideas about zen mode, contact us, issue or pull requests.
 
-### Making a Progressive Web App
+#### Completed game
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<!-- CONTRIBUTING -->
+## Contributions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This website was developed by a team of developers as below
 
-### `npm run build` fails to minify
+- [Bilaal Kulane](https://github.com/bilaalgithub)
+  
+- [Maisie Truong](https://github.com/mtruong1995)
+  
+- [Prabhav Reddy](https://github.com/nrprabhav)
+ 
+- [Ranjana Kumar](https://github.com/kumarranjana)
+  
+- [Weilong Wang](https://github.com/V7lanw)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+## Future Work
+
+- [ ] Polished UI:
+      Improve design and animation
+- [ ] Countdown timer
+      Time limit to make it more advances
+- [ ] Sound:
+      Add sounds to the games to improve engagement
+- [ ] Do extensive testing to locate bugs in the code
+
+See the [open issues](https://github.com/nrprabhav/game-player-project/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Links to the Project
+
+Project Link: [https://github.com/nrprabhav/Wordle-Game](https://github.com/nrprabhav/Wordle-Game)
+
+Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful-centaur-627e07.netlify.app/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* Thanks to Drew Hoang and Austin Imbastari for teaching and supporting us.
+* [Fantastic-pudding](https://fantastic-pudding.vercel.app/)
+* [Bootstrap](https://getbootstrap.com/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[contributors-url]: https://github.com/nrprabhav/wordle-game/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nrprabhav/wordle-game.svg?style=for-the-badge
+[forks-url]: https://github.com/nrprabhav/wordle-game/network/members
+[stars-shield]: https://img.shields.io/github/stars/nrprabhav/wordle-game.svg?style=for-the-badge
+[stars-url]: https://github.com/nrprabhav/Group-Project/stargazers
+[issues-shield]: https://img.shields.io/github/issues/nrprabhav/Group-Project.svg?style=for-the-badge
+[issues-url]: https://github.com/nrprabhav/Group-Project/issues
+[license-shield]: https://img.shields.io/github/license/nrprabhav/Group-Project.svg?style=for-the-badge
+[license-url]: https://github.com/nrprabhav/Group-Project/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/CSS3-DD0031?style=for-the-badge&logo=css3&logoColor=white
+[Angular-url]: https://angular.io/
+[youtube.dev]: https://img.shields.io/badge/Youtube-4A4A55?style=for-the-badge&logo=youtube&logoColor=FF3E00
+[youtube-url]: https://youtube.com/
+[GiPhy.com]: https://img.shields.io/badge/GIPHY-FF2D20?style=for-the-badge&logo=giphy&logoColor=white
+[GiPhy-url]: https://giphy.com/
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
+[canva.com]:https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white
+[canva-url]: https://www.canva.com/
+[Nodejs.com]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Nodejs-url]: https://nodejs.org/en
+[Css3.com]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[Css3-url]: https://www.w3.org/Style/CSS/Overview.en.html
+[Javascript.com]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[Javascript-url]: https://www.javascript.com/
+[html.com]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
+[html-url]: https://html.com/
+

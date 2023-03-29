@@ -10,7 +10,12 @@ import Keypad from './components/Keypad/Keypad';
 import GameOverModal from './components/Modal/Modal';
 import TopPanel from './components/TopPanel/TopPanel';
 import InstructionModal from './components/InstructionModal/InstructionModal';
+//import WhiteboardToggle from './components/WhiteboardToggle';
 import axios from 'axios';
+
+// whiteboard component
+import Whiteboard from './components/Whiteboard';
+
 
 function App() {
   /**SETTING THE COMPONENT STATES */
@@ -169,10 +174,11 @@ function App() {
     setKey({ value: e.target.value, timeStamp: e.timeStamp });
   });
 
-  return (
+  return (<div>
+    
     <div>
       <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)} />
-      <div className="container d-flex flex-column">
+      <div className="wordle-panel container d-flex flex-column">
         <WordlePanel
           row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
           row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
@@ -196,7 +202,8 @@ function App() {
         }
       </div>
     </div>
-  );
+    <Whiteboard />
+  </div>);
 }
 
 export default App;

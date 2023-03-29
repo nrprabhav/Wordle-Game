@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.wordle-bg-rotate {
+  white-space: nowrap;
+  transform: rotate(-4deg);
+  padding: 4px;
+  opacity: 40%;
+}
+
+.wordle-bg-char {
+  font-family: 'Lucida Console', Courier, monospace !important;
+}

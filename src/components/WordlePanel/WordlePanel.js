@@ -5,7 +5,7 @@ import "./WordlePanel.css"
 function WordlePanel(props) {
     // The Wordle panel consists of six WordlePanelRows
     return (
-        <div className="container text-center">
+        <div className="container text-center ">
             <div className="row justify-content-center">
                 <div className="col">
                     <WordlePanelRow data={props.row1} color={props.row1Color} filled={props.row1Filled} />
@@ -32,15 +32,3 @@ function WordlePanel(props) {
 }
 
 export default WordlePanel;
-
-
-/*
-<div className="card">
-        <ul className="list-group">
-            <li className="list-group-item p-0"><WordlePanelRow data={props.data[0]}/></li>
-            <li className="list-group-item p-0"><WordlePanelRow data={props.data[0]}/></li>
-            <li className="list-group-item p-0"><WordlePanelRow data={props.data[0]}/></li>
-            <li className="list-group-item p-0"><WordlePanelRow data={props.data[0]}/></li>
-            <li className="list-group-item p-0"><WordlePanelRow data={props.data[0]}/></li>
-        </ul></div>
-*/
