@@ -1,36 +1,41 @@
-import IsDictionaryWord from "./isDictionaryWord";
 
-const CheckGuess = ({ isGuessed, guess, word, data}) => {
+const checkGuess = (data, solution, letterColor, usedKeys) => {
+  const solutionCopy = [...solution];
+  const guess = [...data.guessLetters[data.row]];
+  const updatedKeyState = {...usedKeys};
+  const colorDiff = [false, false, false, false, false];
 
-  console.log("CHECK");
-  //IsDictionaryWord(data.row1);
-  // Check if the guess is a valid dictionary word
-  //IsDictionaryWord(data.row1);
-  // Highlight letters which are wrong or right
-  const letterColors = guess.split('').map((letter, i) => {
-    if (!isGuessed) {
-      return 'bg-black';
-    } else if (letter === word[i]) {
-      return 'bg-success';
-    } else if (word.includes(letter)) {
-      return 'bg-warning';
-    } else {
-      return 'bg-black';
+  for (let i = 0; i < 5; i++) {
+    if (solutionCopy[i] === guess[i]) {
+      colorDiff[i] = "green";
+      solutionCopy[i] = "";
+      updatedKeyState[guess[i]] = "success";
     }
-  });
+  }
 
-  return (
-    <div className="mb-2 grid grid-cols-5 gap-2">
-      {guess.split('').map((letter, i) => (
-        <div
-          key={i}
-          className={`flex h-16 w-16 items-center justify-center border border-gray-400 font-bold uppercase text-white ${letterColors[i]}`}
-        >
-          {letter}
-        </div>
-      ))}
-    </div>
-  );
+  for (let i = 0; i < 5; i++) {
+    if (colorDiff[i] !== "green") {
+      if (solutionCopy.includes(guess[i])) {
+        colorDiff[i] = "GoldenRod";
+        if (updatedKeyState[guess[i]] !== "success") {
+          updatedKeyState[guess[i]] = "warning";
+        }
+      } else {
+        colorDiff[i] = "grey";
+        if (
+          updatedKeyState[guess[i]] !== "success" &&
+          updatedKeyState[guess[i]] !== "warning"
+        ) {
+          updatedKeyState[guess[i]] = "secondary";
+        }
+      }
+    }
+  }
+
+  letterColor[data.row] = colorDiff;
+
+  return { letterColor, updatedKeyState };
 };
 
-export default CheckGuess;
+export default checkGuess;
+

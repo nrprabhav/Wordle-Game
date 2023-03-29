@@ -1,0 +1,25 @@
+.modal {
+    background: rgba(255,255,255,0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .modal .solution {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: large;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .span-solution {
+    background-color: green;
+    margin: 2px;
+    padding: 2px;
+    width: 30px;
+    border-radius: 1px;
+  }
