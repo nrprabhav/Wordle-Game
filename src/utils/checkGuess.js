@@ -1,40 +1,40 @@
-import IsDictionaryWord from "./isDictionaryWord";
 
-const CheckGuess = (data) => {
-    console.log("CHECK");
-    IsDictionaryWord(data.row1);
-    /*****************************
-     * Is the word a dictionary word?
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+const checkGuess = (data, solution, letterColor, usedKeys) => {
+  const solutionCopy = [...solution];
+  const guess = [...data.guessLetters[data.row]];
+  const updatedKeyState = {...usedKeys};
+  const colorDiff = [false, false, false, false, false];
 
-    /***************************
-     * Is the word the guessed word?
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+  for (let i = 0; i < 5; i++) {
+    if (solutionCopy[i] === guess[i]) {
+      colorDiff[i] = "green";
+      solutionCopy[i] = "";
+      updatedKeyState[guess[i]] = "success";
+    }
+  }
 
-    /****************************
-     * HIGHLIGHT Letters which are wrong or right
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
-}
+  for (let i = 0; i < 5; i++) {
+    if (colorDiff[i] !== "green") {
+      if (solutionCopy.includes(guess[i])) {
+        colorDiff[i] = "GoldenRod";
+        if (updatedKeyState[guess[i]] !== "success") {
+          updatedKeyState[guess[i]] = "warning";
+        }
+      } else {
+        colorDiff[i] = "grey";
+        if (
+          updatedKeyState[guess[i]] !== "success" &&
+          updatedKeyState[guess[i]] !== "warning"
+        ) {
+          updatedKeyState[guess[i]] = "secondary";
+        }
+      }
+    }
+  }
 
-export default CheckGuess;
+  letterColor[data.row] = colorDiff;
+
+  return { letterColor, updatedKeyState };
+};
+
+export default checkGuess;
