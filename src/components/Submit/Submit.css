@@ -1,0 +1,15 @@
+.btn-icons {
+    margin: 2px;
+    width: 40%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+}
+
+.specialBtn{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

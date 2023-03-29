@@ -12,11 +12,11 @@ const closeWhiteboard = () => {
 
 // ".container" is supposed to be only used for wordle panel
 const openWordlePanel = () => {
-    $(".container").show();
+    $(".wordle-panel").show();
 };
 
 const closeWordlePanel = () => {
-    $(".container").hide();
+    $(".wordle-panel").hide();
 };
 
 const switchWhiteboard = () => {
