@@ -25,7 +25,7 @@ const CheckGuess = (data, solution, letterColor, usedKeys) => {
                 if(newKeys[guess[i]]!=="success") newKeys[guess[i]]="warning";
             } else {
                 diff[i] = "grey";
-                if(newKeys[guess[i]]!=="success" || newKeys[guess[i]]!=="warning") newKeys[guess[i]]="secondary";
+                if(newKeys[guess[i]]!=="success" && newKeys[guess[i]]!=="warning") newKeys[guess[i]]="secondary";
             }
         }
     }

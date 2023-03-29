@@ -1,4 +1,3 @@
-//import WordlePanel from "./components/WordlePanel"
 import './App.css';
 import { useEffect, useState } from 'react';
 import WordlePanel from './components/WordlePanel/WordlePanel';
@@ -46,7 +45,7 @@ function App() {
     ["", "", "", "", ""]
   ]
   );
-  const [solution, setSolution] = useState("GAMES");
+  const [solution, setSolution] = useState("STEEL");
   const [showModal, setShowModal] = useState({
     show: false,
     isCorrect: false
@@ -91,7 +90,7 @@ function App() {
 
   useEffect(() => {
     //What should you do if the debounced value of the keypress changes.
-    console.log(debouncedKey.value);
+    //console.log(debouncedKey.value);
     if (debouncedKey.value !== "Enter") {
       
       let temp = RespondToKeyPress({ ...data }, debouncedKey.value, [...filled]);
@@ -106,7 +105,7 @@ function App() {
   }, [debouncedKey.timeStamp])
 
   const checkEntry = async () => {
-    console.log(data.index);
+    //console.log(data.index);
     if (data.index >= 5) {
       await API.IsDictionaryWord(data.guessLetters[data.row].join(''))
         .then(res => {
