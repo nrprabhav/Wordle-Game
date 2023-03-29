@@ -10,11 +10,22 @@ const closeWhiteboard = () => {
     $(".whiteboard-container").hide();
 };
 
+// ".container" is supposed to be only used for wordle panel
+const openWordlePanel = () => {
+    $(".container").show();
+};
+
+const closeWordlePanel = () => {
+    $(".container").hide();
+};
+
 const switchWhiteboard = () => {
     if ($('#whiteboardToggleSwitch').prop("checked")) {
+        closeWordlePanel();
         openWhiteboard();
     } else {
         closeWhiteboard();
+        openWordlePanel();
     }
 };
 
