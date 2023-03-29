@@ -8,7 +8,7 @@ import API from "./utils/API.js";
 import Submit from './components/Submit/Submit';
 import Keypad from './components/Keypad/Keypad';
 import GameOverModal from './components/Modal/Modal';
-import TopPanel from './components/TopPanel';
+import TopPanel from './components/TopPanel/TopPanel';
 import InstructionModal from './components/InstructionModal/InstructionModal';
 //import axios from 'axios';
 
@@ -90,16 +90,25 @@ function App() {
 
   useEffect(() => {
     //What should you do if the debounced value of the keypress changes.
-    //console.log(debouncedKey.value);
+    console.log(debouncedKey.value);
     if (debouncedKey.value !== "Enter") {
       
       let temp = RespondToKeyPress({ ...data }, debouncedKey.value, [...filled]);
       setData(temp.data);
-      //let tempFilled = filled.slice();
-      //tempFilled[data.row][data.index]="filled";
       setFilled(temp.filled);
     } else {
-      checkEntry();
+      console.log(showModal);
+      if(showModal.show === true) {
+        console.log("MODAL");
+        setShowModal({...showModal, show: false});
+        window.location.reload();
+      } else if (showInstructionModal === true) {
+        console.log("INSTRUCTION MODAL");
+        setShowInstructionModal(false);
+      } else {
+        console.log("CHECK ENTRY");
+        checkEntry();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey.timeStamp])
