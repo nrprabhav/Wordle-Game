@@ -70,7 +70,7 @@ function App() {
     <div className="container w-50">
       {/* <WordlePanel row1={data.row1} row2={data.row2} row3={data.row3} row4={data.row4} row5={data.row5} /> */}
       < CheckGuess isGuessed={true} guess= {"hello"} word={"howdy"} data={data}  />
-      {/* <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} /> */}
+      <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} />
       <Submit clickHandler={checkEntry}/>
     </div>
     <h3 className='wordle-bg-rotate'>
