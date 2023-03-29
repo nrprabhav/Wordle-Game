@@ -1,5 +1,6 @@
 import "./Submit.css"
 
+// Code to have the backspace and enter buttons on the keyboard below the wordle panel
 const Submit = (props) => {
     return (
         <div className="specialBtn">

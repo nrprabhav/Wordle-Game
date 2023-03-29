@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./Keypad.css";
 
+// Construct the Keypad on the App
 function Keypad(props) {
     const [letters, setLetters] = useState(null);
 
-    useEffect(() => {
+    useEffect(() => { // Set the letters on load
         setLetters( [
             {"key": "A"},
             {"key": "B"},
@@ -36,8 +37,8 @@ function Keypad(props) {
           ])
     }, []);
 
-    const variantName = (usedKeys,key) => {
-        //console.log(key, ": ", usedKeys[key]);
+    const variantName = (usedKeys,key) => { 
+        // Function to decide the color of the keys on the keypad. It depends on the usedKeys property coming from App.js
         if(key in usedKeys) {
             return( usedKeys[key]);
         } else {

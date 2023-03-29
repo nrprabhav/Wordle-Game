@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./TopPanel.css"
 
+// Code to make the TopPanel in the App page
 function TopPanel(props) {
   return (
     <Navbar bg="light" expand="lg">

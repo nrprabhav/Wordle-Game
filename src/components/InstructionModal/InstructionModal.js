@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-//import "./Modal.css"
 
+// Construct a modal that gives instructions about the game.
 function InstructionModal(props) {
     return (
         <Modal

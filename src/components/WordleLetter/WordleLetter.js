@@ -1,12 +1,11 @@
 import React from "react";
-import "./style.css";
+import "./WordleLetter.css";
 
-function LetterButton(props) {
-    //if(props.filled === "filled") console.log(props);
+function WordleLetter(props) {
     let classNameVal = `list-group-item ${props.color}`;
     return (
         <li className={classNameVal} ><div className={props.filled}>{props.data}</div></li>
     )
 }
 
-export default LetterButton;
+export default WordleLetter;

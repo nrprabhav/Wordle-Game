@@ -1,5 +1,5 @@
 
-const CheckGuess = (data, solution, letterColor, usedKeys) => {
+const CompareGuess = (data, solution, letterColor, usedKeys) => {
     //console.log("CHECK");
     //console.log(`SOLUTION: ${solution}`);
     //let tempLetterColor = [...letterColor];
@@ -35,4 +35,4 @@ const CheckGuess = (data, solution, letterColor, usedKeys) => {
     return {letterColor, newKeys};
 }
 
-export default CheckGuess;
+export default CompareGuess;
