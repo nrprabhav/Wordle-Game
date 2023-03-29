@@ -10,7 +10,7 @@ import Keypad from './components/Keypad/Keypad';
 import GameOverModal from './components/Modal/Modal';
 import TopPanel from './components/TopPanel/TopPanel';
 import InstructionModal from './components/InstructionModal/InstructionModal';
-//import axios from 'axios';
+import axios from 'axios';
 
 function App() {
   const [key, setKey] = useState({
@@ -55,7 +55,6 @@ function App() {
 
   // GET as new word from the wordle-solutions API when the page loads for the first time
   // Uncomment when done
-  /*
   useEffect(() => {
     console.log("GET SOLUTION");
     const options = {
@@ -73,7 +72,7 @@ function App() {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);*/
+  }, []);
 
   // Debounce the Key Press
   const debouncedKey = useDebounce(key, 100);
