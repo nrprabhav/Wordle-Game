@@ -73,6 +73,7 @@ function App() {
   // Keeping a track of the letters that have been used
   // Used for highlighting the letters in the keyboard: See utils/checkGuess.js for functionality
   const [usedKeys, setUsedKeys] = useState({});
+  const [showWhiteboard, setShowWhiteboard] = useState(false);
 
   // Get a new wordle solution for the new puzzle
   // Run once on load
@@ -102,7 +103,7 @@ function App() {
   // Listen to a key press anywhere on the window
   useEffect(() => {
     window.addEventListener('keydown', e => {
-      if ((e.which >= 65 && e.which <= 90) || e.which === 8 || e.which === 13) {
+      if (((e.which >= 65 && e.which <= 90) || e.which === 8 || e.which === 13)) {
         // Respond if the key is a letter press or a backspace or a enter only
         setKey({ value: e.key, timeStamp: e.timeStamp });
       }
@@ -112,7 +113,8 @@ function App() {
   // What should you do if there is a new value of the debounced key
   // Used timeStamp as the trigger so that repeated key entries are detected
   useEffect(() => {
-    if (debouncedKey.value !== "Enter") {
+    console.log("ROW-K: " + data.row);
+    if (debouncedKey.value !== "Enter" && !showWhiteboard && !showInstructionModal && !showModal.show) {
       let temp = RespondToKeyPress({ ...data }, debouncedKey.value, [...filled]);
       setData(temp.data);
       setFilled(temp.filled);
@@ -129,11 +131,39 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey.timeStamp])
 
+  useEffect(() => {
+    // Functionality for checking if the guess is correct or wrong
+    // Called whenever the program accepts a word and goes into a new row to get a new guess
+    let doneFlg = true;
+    let i = 0;
+    if (data.row > 0) {
+      for (i = 0; i < 5; i++) { // Check if the guess is correct
+        if (letterColor[data.row - 1][i] !== "green") {
+          doneFlg = false;
+        }
+      }
+    }
+    if (doneFlg && (i !== 0)) {
+      // Won the game
+      console.log("WON");
+      setTimeout(function () {
+        setShowModal({ show: true, isCorrect: true });
+      }, 2500);
+    } else if (data.row >= 6) {
+      // Lost the game
+      setTimeout(function () {
+        setShowModal({ show: true, isCorrect: false });
+      }, 2500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.row])
+
   // Functionality for checking a new guess
   const checkEntry = async () => {
     if (data.index >= 5) { // Make sure that a 5 letter word has been guessed
       await API.IsDictionaryWord(data.guessLetters[data.row].join('')) // Is the word a valid dictionary word?
         .then(res => {
+          console.log("Increment Row");
           setData({ ...data, index: 0, row: data.row + 1 }); // If yes, reset the index and row values
           let temp = CompareGuess(data, solution, letterColor, usedKeys); // Compare guess to the solution
           setLetterColor(temp.letterColor);
@@ -145,28 +175,9 @@ function App() {
           let temp = data.guessLetters;
           temp[data.row] = ["", "", "", "", ""];
           setData({ ...data, guessLetters: temp, index: 0 });
+          console.log("ROW: " + data.row);
         });
-
-      // check if the solution is found
-      let doneFlg = true;
-      for (let i = 0; i < 5; i++) { 
-        if (letterColor[data.row][i] !== "green") {
-          doneFlg = false;
-        }
-      }
-      if (doneFlg) {
-        // Won the game
-        setTimeout(function () {
-          setShowModal({ show: true, isCorrect: true });
-        }, 2500)    // Allow 2.5s before displaying the won modal - this time is for the animation in the wordle grid to finish
-      } else if (data.row >= 5) {
-        // Lost the game
-        setTimeout(function () {
-          setShowModal({ show: true, isCorrect: false });
-        }, 2500)    // Allow 2.5s before displaying the lost modal - this time is for the animation in the wordle grid to finish
-      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
   const KeypadClick = ((e) => {
@@ -175,10 +186,10 @@ function App() {
   });
 
   return (<div>
-    
+
     <div>
-      <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)} />
-      <div className="wordle-panel container d-flex flex-column">
+      <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)} toggleWhiteboard={() => setShowWhiteboard(!showWhiteboard)} />
+      {!showWhiteboard && <div className="wordle-panel container d-flex flex-column">
         <WordlePanel
           row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
           row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
@@ -195,14 +206,15 @@ function App() {
             isCorrect={showModal.isCorrect}
             onHide={() => window.location.reload()} />
         }
-        {showInstructionModal &&
-          <InstructionModal
-            show={showInstructionModal}
-            onHide={() => setShowInstructionModal(false)} />
-        }
-      </div>
+
+      </div>}
+      {showInstructionModal &&
+        <InstructionModal
+          show={showInstructionModal}
+          onHide={() => setShowInstructionModal(false)} />
+      }
     </div>
-    <Whiteboard />
+    {showWhiteboard && <Whiteboard />}
   </div>);
 }
 

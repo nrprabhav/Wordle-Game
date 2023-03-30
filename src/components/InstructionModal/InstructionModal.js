@@ -21,6 +21,7 @@ function InstructionModal(props) {
                     <li>Type in your guess and submit your word by hitting the “enter” key. You may use either the Wordle keyboard or a keyboard on your device.</li>
                     <li>The color of the tiles will change after you submit your word. A yellow tile indicates that you picked the right letter but it’s in the wrong spot. The green tile indicates that you picked the right letter in the correct spot. The gray tile indicates that the letter you picked is not included in the word at all.</li>
                     <li>Continue until you solve the Wordle or run out of guesses. Good luck!</li>
+                    <li>You can use the whiteboard to do some rough work. Open the whiteboard by clicking the button on the top. You can return to the game any time by clicking again.</li>
                 </ul>
             </Modal.Body>
             <Modal.Footer className='justify-content-center'>
