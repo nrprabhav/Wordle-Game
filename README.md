@@ -190,7 +190,7 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 [stars-url]: https://github.com/nrprabhav/Wordle-Game/stargazers
 [issues-shield]: https://img.shields.io/github/issues/nrprabhav/Wordle-Game.svg?style=for-the-badge
 [issues-url]: https://github.com/nrprabhav/Wordle-Game/issues
-[license-shield]: https://img.shields.io/github/license/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/nrprabhav/Group-project.svg?style=for-the-badge
 [license-url]: https://github.com/nrprabhav/Wordle-Game/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
