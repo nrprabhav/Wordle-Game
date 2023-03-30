@@ -18,14 +18,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   <p align="center">
     A word game where you have to guess the five-letter word
     <br />
-    <a href="https://github.com/nrprabhav/wordle-game"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/nrprabhav/Wordle-Game"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/nrprabhav/wordle-game">View Demo</a>
+    <a href="https://github.com/nrprabhav/Wordle-Game">View Demo</a>
     ·
-    <a href="https://github.com/nrprabhav/wordle-game">Report Bug</a>
+    <a href="https://github.com/nrprabhav/Wordle-Game">Report Bug</a>
     ·
-    <a href="https://github.com/nrprabhav/wordle-game">Request Feature</a>
+    <a href="https://github.com/nrprabhav/Wordle-Game">Request Feature</a>
   </p>
 </div>
 
@@ -181,15 +181,15 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/nrprabhav/Wordle-Game.svg?style=for-the-badge
-[contributors-url]: https://github.com/nrprabhav/wordle-game/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/nrprabhav/wordle-game.svg?style=for-the-badge
-[forks-url]: https://github.com/nrprabhav/wordle-game/network/members
-[stars-shield]: https://img.shields.io/github/stars/nrprabhav/wordle-game.svg?style=for-the-badge
-[stars-url]: https://github.com/nrprabhav/Group-Project/stargazers
-[issues-shield]: https://img.shields.io/github/issues/nrprabhav/Group-Project.svg?style=for-the-badge
-[issues-url]: https://github.com/nrprabhav/Group-Project/issues
-[license-shield]: https://img.shields.io/github/license/nrprabhav/Group-Project.svg?style=for-the-badge
-[license-url]: https://github.com/nrprabhav/Group-Project/blob/master/LICENSE.txt
+[contributors-url]: https://github.com/nrprabhav/Wordle-Game/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[forks-url]: https://github.com/nrprabhav/Wordle-Game/network/members
+[stars-shield]: https://img.shields.io/github/stars/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[stars-url]: https://github.com/nrprabhav/Wordle-Game/stargazers
+[issues-shield]: https://img.shields.io/github/issues/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[issues-url]: https://github.com/nrprabhav/Wordle-Game/issues
+[license-shield]: https://img.shields.io/github/license/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[license-url]: https://github.com/nrprabhav/Wordle-Game/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
