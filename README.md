@@ -55,7 +55,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-(insert gif of final app)
+![game-preview](/assets/game-action.gif)
 
 This app allows user to use the on screen keyboard to input their guesses for the correct word.
 
@@ -104,13 +104,15 @@ This app allows user to use the on screen keyboard to input their guesses for th
 
 #### Homepage
 
-![homepage-screenshot](...)
+![homepage-screenshot](/assets/app-homepage.png)
 
 #### Whiteboard
 
 See [Whiteboard Readme](./src/components/Whiteboard/Whiteboard-README.md) for more details.
 
 #### Completed game
+
+![game-complete](/assets/game-complete.png)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -188,7 +190,7 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 [stars-url]: https://github.com/nrprabhav/Wordle-Game/stargazers
 [issues-shield]: https://img.shields.io/github/issues/nrprabhav/Wordle-Game.svg?style=for-the-badge
 [issues-url]: https://github.com/nrprabhav/Wordle-Game/issues
-[license-shield]: https://img.shields.io/github/license/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/nrprabhav/Group-project.svg?style=for-the-badge
 [license-url]: https://github.com/nrprabhav/Wordle-Game/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
@@ -222,3 +224,4 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 [netlify]: https://app.netlify.com/sites/react-bootstrap/deploys
 [axios-badge]: https://img.shields.io/badge/-Axios-orange?style=for-the-badge&logo=axios&logoColor=white
 [axios]: https://www.axios.com
+[license-url]: 
