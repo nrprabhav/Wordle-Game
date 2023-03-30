@@ -73,6 +73,7 @@ function App() {
   // Keeping a track of the letters that have been used
   // Used for highlighting the letters in the keyboard: See utils/checkGuess.js for functionality
   const [usedKeys, setUsedKeys] = useState({});
+  const [showWhiteboard, setShowWhiteboard]  = useState(false);
 
   // Get a new wordle solution for the new puzzle
   // Run once on load
@@ -177,8 +178,8 @@ function App() {
   return (<div>
     
     <div>
-      <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)} />
-      <div className="wordle-panel container d-flex flex-column">
+      <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)} toggleWhiteboard={() => setShowWhiteboard(!showWhiteboard)}/>
+      {!showWhiteboard && <div className="wordle-panel container d-flex flex-column">
         <WordlePanel
           row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
           row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
@@ -195,14 +196,15 @@ function App() {
             isCorrect={showModal.isCorrect}
             onHide={() => window.location.reload()} />
         }
-        {showInstructionModal &&
+        
+      </div>}
+      {showInstructionModal &&
           <InstructionModal
             show={showInstructionModal}
             onHide={() => setShowInstructionModal(false)} />
         }
-      </div>
     </div>
-    <Whiteboard />
+    {showWhiteboard && <Whiteboard />}
   </div>);
 }
 
