@@ -103,7 +103,7 @@ function App() {
   // Listen to a key press anywhere on the window
   useEffect(() => {
     window.addEventListener('keydown', e => {
-      if ((e.which >= 65 && e.which <= 90) || e.which === 8 || e.which === 13) {
+      if (((e.which >= 65 && e.which <= 90) || e.which === 8 || e.which === 13) && !showWhiteboard) {
         // Respond if the key is a letter press or a backspace or a enter only
         setKey({ value: e.key, timeStamp: e.timeStamp });
       }
@@ -113,7 +113,7 @@ function App() {
   // What should you do if there is a new value of the debounced key
   // Used timeStamp as the trigger so that repeated key entries are detected
   useEffect(() => {
-    if (debouncedKey.value !== "Enter") {
+    if (debouncedKey.value !== "Enter" && !showWhiteboard ) {
       let temp = RespondToKeyPress({ ...data }, debouncedKey.value, [...filled]);
       setData(temp.data);
       setFilled(temp.filled);
