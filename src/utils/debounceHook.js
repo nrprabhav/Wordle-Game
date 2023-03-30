@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// Prevent multiple key presses by changing the value with a delay
 const useDebounce = (value, delay, timeStamp) => {
   const [debouncedValue, setDebouncedValue] = useState({
     value: "",
@@ -8,7 +9,6 @@ const useDebounce = (value, delay, timeStamp) => {
   useEffect(
     () => {
       const handler = setTimeout(() => {
-        console.log("DEBOUNCE");
         setDebouncedValue(value);
       }, delay);
       // Cancel the timeout if value or delay changes
@@ -16,7 +16,7 @@ const useDebounce = (value, delay, timeStamp) => {
         clearTimeout(handler);
       };
     },
-    // Only call the effect if value or delay changes.
+    // Only call the effect if value/delay/timeStamp changes.
     [value, delay, timeStamp]
   );
 

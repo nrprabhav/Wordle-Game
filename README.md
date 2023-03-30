@@ -18,14 +18,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   <p align="center">
     A word game where you have to guess the five-letter word
     <br />
-    <a href="https://github.com/nrprabhav/wordle-game"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/nrprabhav/Wordle-Game"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/nrprabhav/wordle-game">View Demo</a>
+    <a href="https://github.com/nrprabhav/Wordle-Game">View Demo</a>
     ·
-    <a href="https://github.com/nrprabhav/wordle-game">Report Bug</a>
+    <a href="https://github.com/nrprabhav/Wordle-Game">Report Bug</a>
     ·
-    <a href="https://github.com/nrprabhav/wordle-game">Request Feature</a>
+    <a href="https://github.com/nrprabhav/Wordle-Game">Request Feature</a>
   </p>
 </div>
 
@@ -67,26 +67,37 @@ This app allows user to use the on screen keyboard to input their guesses for th
 
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
-* [![React][React.com]][React-url]
+* [![React][React.js]][React-url]
 * [![Javascript][Javascript.com]][Javascript-url]
 * [![Css3][Css3.com]][Css3-url]
 * [![Node.js][Nodejs.com]][Nodejs-url]
 * [![HTML][html.com]][html-url]
-* [Axios](https://www.axios.com/)
+* [![Netlify][netlify-badge]][netlify]
+* [![Axios][axios-badge]][axios]
 
 ### New packages:
-[Excalidraw](https://excalidraw.com/)
-[Wordle API](https://wordle-answers-solutions.p.rapidapi.com/)
-[Free Dictionary API](https://dictionaryapi.dev/)
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+* [Excalidraw](https://excalidraw.com/)
+* [Wordle API](https://wordle-answers-solutions.p.rapidapi.com/)
+* [Free Dictionary API](https://dictionaryapi.dev/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- Features of the Page -->
 ### Features of the Page
-1. The app allows users to use an on screen keyboard to input letters to guess the correct word
-2. There are animations and diffferent colours for the letters
-3. A toggle button will show a whiteboard for users to write notes
+1. A wordle grid is shown on the screen into which letters can be inputted either using
+* the on-screen keyboard, or
+* the keyboard on your device
+2. As letters are entered, a bouncing animation is shows the new letter going into the grid
+3. After a guess is made, clicking or pressing enter checks the word against the solution and the letters are highlighted in different colors
+* A green tile indicates that you picked the right letter in the correct spot. 
+* A yellow tile indicates that you picked the right letter but it’s in the wrong spot.
+* A gray tile indicates that the letter you picked is not included in the word at all.
+4. The highlighting happens one letter at a time, with some animation.
+5. When all the guesses are over, a pop-up tells you that you have lost.
+6. If you guess the word correctly, a pop-up tells you that you have won.
+7. A toggle button will show a whiteboard for users to write notes
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -96,6 +107,8 @@ This app allows user to use the on screen keyboard to input their guesses for th
 ![homepage-screenshot](...)
 
 #### Whiteboard
+
+See [Whiteboard Readme](./src/components/Whiteboard/Whiteboard-README.md) for more details.
 
 #### Completed game
 
@@ -125,13 +138,8 @@ This website was developed by a team of developers as below
 <!-- ROADMAP -->
 ## Future Work
 
-- [ ] Polished UI:
-      Improve design and animation
-- [ ] Countdown timer
-      Time limit to make it more advances
-- [ ] Sound:
-      Add sounds to the games to improve engagement
-- [ ] Do extensive testing to locate bugs in the code
+- [ ] Keep track of scores of players
+- [ ] Display a histogram of how many tries all users take to solve the puzzle
 
 See the [open issues](https://github.com/nrprabhav/game-player-project/issues) for a full list of proposed features (and known issues).
 
@@ -161,9 +169,10 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Thanks to Drew Hoang and Austin Imbastari for teaching and supporting us.
+* Thanks to Drew Hoang and Austin Imbastari for teaching and supporting us
 * [Fantastic-pudding](https://fantastic-pudding.vercel.app/)
 * [Bootstrap](https://getbootstrap.com/)
+* Thanks to [Shaun from Net Ninja](https://netninja.dev/) for guidance on how to do the animations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -172,15 +181,15 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/nrprabhav/Wordle-Game.svg?style=for-the-badge
-[contributors-url]: https://github.com/nrprabhav/wordle-game/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/nrprabhav/wordle-game.svg?style=for-the-badge
-[forks-url]: https://github.com/nrprabhav/wordle-game/network/members
-[stars-shield]: https://img.shields.io/github/stars/nrprabhav/wordle-game.svg?style=for-the-badge
-[stars-url]: https://github.com/nrprabhav/Group-Project/stargazers
-[issues-shield]: https://img.shields.io/github/issues/nrprabhav/Group-Project.svg?style=for-the-badge
-[issues-url]: https://github.com/nrprabhav/Group-Project/issues
-[license-shield]: https://img.shields.io/github/license/nrprabhav/Group-Project.svg?style=for-the-badge
-[license-url]: https://github.com/nrprabhav/Group-Project/blob/master/LICENSE.txt
+[contributors-url]: https://github.com/nrprabhav/Wordle-Game/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[forks-url]: https://github.com/nrprabhav/Wordle-Game/network/members
+[stars-shield]: https://img.shields.io/github/stars/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[stars-url]: https://github.com/nrprabhav/Wordle-Game/stargazers
+[issues-shield]: https://img.shields.io/github/issues/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[issues-url]: https://github.com/nrprabhav/Wordle-Game/issues
+[license-shield]: https://img.shields.io/github/license/nrprabhav/Wordle-Game.svg?style=for-the-badge
+[license-url]: https://github.com/nrprabhav/Wordle-Game/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
@@ -209,4 +218,7 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 [Javascript-url]: https://www.javascript.com/
 [html.com]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
 [html-url]: https://html.com/
-
+[netlify-badge]: https://img.shields.io/badge/-Netlify-orange?style=for-the-badge&logo=netlify&logoColor=white
+[netlify]: https://app.netlify.com/sites/react-bootstrap/deploys
+[axios-badge]: https://img.shields.io/badge/-Axios-orange?style=for-the-badge&logo=axios&logoColor=white
+[axios]: https://www.axios.com

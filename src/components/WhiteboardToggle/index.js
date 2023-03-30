@@ -1,24 +1,7 @@
 import React from "react";
 import "./style.css";
-import $ from 'jquery';
 
-const openWhiteboard = () => {
-    $(".whiteboard-container").show();
-};
-
-const closeWhiteboard = () => {
-    $(".whiteboard-container").hide();
-};
-
-const switchWhiteboard = () => {
-    if ($('#whiteboardToggleSwitch').prop("checked")) {
-        openWhiteboard();
-    } else {
-        closeWhiteboard();
-    }
-};
-
-const WhiteboardToggle = () => {
+const WhiteboardToggle = (props) => {
     return (<div>
         <div class="form-check form-switch">
             <input
@@ -26,7 +9,7 @@ const WhiteboardToggle = () => {
                 type="checkbox"
                 role="switch"
                 id="whiteboardToggleSwitch"
-                onClick={() => switchWhiteboard()}
+                onClick={props.toggleWhiteboard}
             />
             <label class="form-check-label" for="flexSwitchCheckDefault">Whiteboard</label>
         </div>

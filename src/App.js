@@ -1,98 +1,220 @@
-//import WordlePanel from "./components/WordlePanel"
 import './App.css';
 import { useEffect, useState } from 'react';
 import WordlePanel from './components/WordlePanel/WordlePanel';
 import useDebounce from './utils/debounceHook';
-import CheckGuess from './utils/checkGuess';
+import CompareGuess from './utils/compareGuess';
 import RespondToKeyPress from './utils/respondToKeyPress';
 import API from "./utils/API.js";
-import Submit from './components/Submit';
+import Submit from './components/Submit/Submit';
+import Keypad from './components/Keypad/Keypad';
+import GameOverModal from './components/Modal/Modal';
+import TopPanel from './components/TopPanel/TopPanel';
+import InstructionModal from './components/InstructionModal/InstructionModal';
+//import WhiteboardToggle from './components/WhiteboardToggle';
+import axios from 'axios';
 
 // whiteboard component
 import Whiteboard from './components/Whiteboard';
-import WhiteboardToggle from './components/WhiteboardToggle';
+
 
 function App() {
+  /**SETTING THE COMPONENT STATES */
+  // State containing the key that has been pressed
   const [key, setKey] = useState({
     value: "",
     timeStamp: 0
   });
+  // State having the letters in the wordle grid and the current row and index
   const [data, setData] = useState({
-    guessLetters: [["", "", "", "", ""],
-                  ["", "", "", "", ""],
-                  ["", "", "", "", ""],
-                  ["", "", "", "", ""],
-                  ["", "", "", "", ""]],
+    guessLetters: [
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""]
+    ],
     index: 0,
     row: 0
   });
+  // State having the background color for each of the wordle grid boxes
+  // Used for setting the background color according to how the guess matches the solution
+  // See utils/Checkguess.js and the function checkEntry for the logic
+  const [letterColor, setLetterColor] = useState([
+    ["white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white"]
+  ]
+  );
+  // State containing the status of each box in the wordle grid - is it filled or not?
+  // Used for the bouncing animation when the letter is typed - see LetterButton.js and LetterButton.css
+  const [filled, setFilled] = useState([
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""]
+  ]
+  );
+  // State to store the solution
+  const [solution, setSolution] = useState("HELLO");
+  // State to store a flag to indicate if the result modals are to be shown or not. 
+  // There are two kinds of modals - one for a win and one for a loss
+  const [showModal, setShowModal] = useState({
+    show: false,
+    isCorrect: false
+  });
+  // A state to keep track of whether to show the instruction modal or not
+  const [showInstructionModal, setShowInstructionModal] = useState(false);
+  // Keeping a track of the letters that have been used
+  // Used for highlighting the letters in the keyboard: See utils/checkGuess.js for functionality
+  const [usedKeys, setUsedKeys] = useState({});
+  const [showWhiteboard, setShowWhiteboard] = useState(false);
+
+  // Get a new wordle solution for the new puzzle
+  // Run once on load
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      url: 'https://wordle-answers-solutions.p.rapidapi.com/answers',
+      headers: {
+        'X-RapidAPI-Key': '9ba7d440b5msh5438551fa5d5c20p112825jsne7fb13cd489f',
+        'X-RapidAPI-Host': 'wordle-answers-solutions.p.rapidapi.com'
+      }
+    }
+    axios.request(options)
+      .then(function (response) {
+        // Select a random word from the large number of solutions presented
+        setSolution(response.data.data[Math.floor(Math.random() * parseInt(response.data.data[0].num))].answer);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
 
   // Debounce the Key Press
-  const debouncedKey = useDebounce(key, 500);
+  // See functionality in utils/debounceHook.js
+  const debouncedKey = useDebounce(key, 100);
 
+  // Listen to a key press anywhere on the window
   useEffect(() => {
-    // Listen to a key press anywhere on the window
     window.addEventListener('keydown', e => {
-      console.log(e);
-      if ((e.which >= 65 && e.which <= 90) || e.which === 8) {
-        setKey({value: e.key, timeStamp: e.timeStamp});
+      if (((e.which >= 65 && e.which <= 90) || e.which === 8 || e.which === 13)) {
+        // Respond if the key is a letter press or a backspace or a enter only
+        setKey({ value: e.key, timeStamp: e.timeStamp });
       }
     });
   }, []);
 
+  // What should you do if there is a new value of the debounced key
+  // Used timeStamp as the trigger so that repeated key entries are detected
   useEffect(() => {
-    //What should you do if the debounced value of the keypress changes.
-    console.log(`Key Pressed: ${debouncedKey}; Index: ${data.index}`);
-    let temp = RespondToKeyPress({ ...data }, debouncedKey.value);
-    console.log(temp);
-    setData(temp);
+    console.log("ROW-K: " + data.row);
+    if (debouncedKey.value !== "Enter" && !showWhiteboard && !showInstructionModal && !showModal.show) {
+      let temp = RespondToKeyPress({ ...data }, debouncedKey.value, [...filled]);
+      setData(temp.data);
+      setFilled(temp.filled);
+    } else {
+      if (showModal.show === true) { // if the results modal is showing go back to the main page
+        setShowModal({ ...showModal, show: false });
+        window.location.reload();
+      } else if (showInstructionModal === true) { // if the instruction modal is showing close it and go back to main page
+        setShowInstructionModal(false);
+      } else { // if enter is pressed on main page; check the word that has been entered
+        checkEntry();
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedKey.timeStamp])
 
-  const checkEntry = () => {
-    if (data.index >= 5) {
-        API.IsDictionaryWord(data.guessLetters[data.row].join(''))
-          .then(res => {
-            setData({ ...data, index: 0, row: data.row + 1 });
-            CheckGuess(data); ///Work from here
-          })
-          .catch(err => { 
-            let temp = data.guessLetters;
-            temp[data.row] = ["", "", "", "", ""];
-            setData({ ...data, guessLetters: temp, index: 0 });
-          });
+  useEffect(() => {
+    // Functionality for checking if the guess is correct or wrong
+    // Called whenever the program accepts a word and goes into a new row to get a new guess
+    let doneFlg = true;
+    let i = 0;
+    if (data.row > 0) {
+      for (i = 0; i < 5; i++) { // Check if the guess is correct
+        if (letterColor[data.row - 1][i] !== "green") {
+          doneFlg = false;
+        }
+      }
+    }
+    if (doneFlg && (i !== 0)) {
+      // Won the game
+      console.log("WON");
+      setTimeout(function () {
+        setShowModal({ show: true, isCorrect: true });
+      }, 2500);
+    } else if (data.row >= 6) {
+      // Lost the game
+      setTimeout(function () {
+        setShowModal({ show: true, isCorrect: false });
+      }, 2500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.row])
+
+  // Functionality for checking a new guess
+  const checkEntry = async () => {
+    if (data.index >= 5) { // Make sure that a 5 letter word has been guessed
+      await API.IsDictionaryWord(data.guessLetters[data.row].join('')) // Is the word a valid dictionary word?
+        .then(res => {
+          console.log("Increment Row");
+          setData({ ...data, index: 0, row: data.row + 1 }); // If yes, reset the index and row values
+          let temp = CompareGuess(data, solution, letterColor, usedKeys); // Compare guess to the solution
+          setLetterColor(temp.letterColor);
+          setTimeout(function () {
+            setUsedKeys(temp.newKeys);
+          }, 2500);
+        })
+        .catch(err => {
+          let temp = data.guessLetters;
+          temp[data.row] = ["", "", "", "", ""];
+          setData({ ...data, guessLetters: temp, index: 0 });
+          console.log("ROW: " + data.row);
+        });
+    }
   };
 
+  const KeypadClick = ((e) => {
+    //console.log(e.target.value);
+    setKey({ value: e.target.value, timeStamp: e.timeStamp });
+  });
+
   return (<div>
-    <WhiteboardToggle />
-    <div className="container w-50">
-      <WordlePanel row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} />
-      <Submit clickHandler={checkEntry}/>
+
+    <div>
+      <TopPanel ModalInstructionHandler={() => setShowInstructionModal(true)} toggleWhiteboard={() => setShowWhiteboard(!showWhiteboard)} />
+      {!showWhiteboard && <div className="wordle-panel container d-flex flex-column">
+        <WordlePanel
+          row1={data.guessLetters[0]} row2={data.guessLetters[1]} row3={data.guessLetters[2]} row4={data.guessLetters[3]} row5={data.guessLetters[4]} row6={data.guessLetters[5]}
+          row1Color={letterColor[0]} row2Color={letterColor[1]} row3Color={letterColor[2]} row4Color={letterColor[3]} row5Color={letterColor[4]} row6Color={letterColor[5]}
+          row1Filled={filled[0]} row2Filled={filled[1]} row3Filled={filled[2]} row4Filled={filled[3]} row5Filled={filled[4]} row6Filled={filled[5]} />
+        <Keypad usedKeys={usedKeys} KeypadClick={(e) => KeypadClick(e)} />
+        <Submit
+          clickHandler={checkEntry}
+          backSpace={() => { setKey({ value: "Backspace", timeStamp: key.timeStamp + 1 }) }} />
+        {showModal.show &&
+          <GameOverModal
+            show={showModal.show}
+            solution={solution}
+            turn={data.row}
+            isCorrect={showModal.isCorrect}
+            onHide={() => window.location.reload()} />
+        }
+
+      </div>}
+      {showInstructionModal &&
+        <InstructionModal
+          show={showInstructionModal}
+          onHide={() => setShowInstructionModal(false)} />
+      }
     </div>
-    <h3 className='wordle-bg-rotate'>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>W</button>
-      <button type="button" class="wordle-bg-char btn btn-secondary" disabled>A</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>R</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>D</button>
-      <button type="button" class="wordle-bg-char btn btn-warning" disabled>E</button>
-      <button type="button" class="wordle-bg-char btn btn-secondary" disabled>N</button>
-      <button type="button" class="wordle-bg-char btn btn-light" disabled>&</button>
-      <br/>
-      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
-      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
-      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
-      <button type="button" class="wordle-bg-char btn btn-light" disabled>&nbsp;</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>W</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>O</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>R</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>D</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>L</button>
-      <button type="button" class="wordle-bg-char btn btn-success" disabled>E</button>
-    </h3>
-    
-    <Whiteboard />
+    {showWhiteboard && <Whiteboard />}
   </div>);
 }
 
