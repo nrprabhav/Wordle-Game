@@ -61,7 +61,7 @@ function App() {
   ]
   );
   // State to store the solution
-  const [solution, setSolution] = useState("STEEL");
+  const [solution, setSolution] = useState("HELLO");
   // State to store a flag to indicate if the result modals are to be shown or not. 
   // There are two kinds of modals - one for a win and one for a loss
   const [showModal, setShowModal] = useState({
