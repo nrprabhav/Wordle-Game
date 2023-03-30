@@ -86,9 +86,18 @@ This app allows user to use the on screen keyboard to input their guesses for th
 
 <!-- Features of the Page -->
 ### Features of the Page
-1. The app allows users to use an on screen keyboard to input letters to guess the correct word
-2. There are animations and diffferent colours for the letters
-3. A toggle button will show a whiteboard for users to write notes
+1. A wordle grid is shown on the screen into which letters can be inputted either using
+* the on-screen keyboard, or
+* the keyboard on your device
+2. As letters are entered, a bouncing animation is shows the new letter going into the grid
+3. After a guess is made, clicking or pressing enter checks the word against the solution and the letters are highlighted in different colors
+* A green tile indicates that you picked the right letter in the correct spot. 
+* A yellow tile indicates that you picked the right letter but it’s in the wrong spot.
+* A gray tile indicates that the letter you picked is not included in the word at all.
+4. The highlighting happens one letter at a time, with some animation.
+5. When all the guesses are over, a pop-up tells you that you have lost.
+6. If you guess the word correctly, a pop-up tells you that you have won.
+7. A toggle button will show a whiteboard for users to write notes
 
 <!-- USAGE EXAMPLES -->
 ## Usage
