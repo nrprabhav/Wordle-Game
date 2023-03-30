@@ -67,17 +67,19 @@ This app allows user to use the on screen keyboard to input their guesses for th
 
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
-* [![React][React.com]][React-url]
+* [![React][React.js]][React-url]
 * [![Javascript][Javascript.com]][Javascript-url]
 * [![Css3][Css3.com]][Css3-url]
 * [![Node.js][Nodejs.com]][Nodejs-url]
 * [![HTML][html.com]][html-url]
-* [Axios](https://www.axios.com/)
+* [![Netlify][netlify-badge]][netlify]
+* [![Axios][axios-badge]][axios]
 
 ### New packages:
-[Excalidraw](https://excalidraw.com/)
-[Wordle API](https://wordle-answers-solutions.p.rapidapi.com/)
-[Free Dictionary API](https://dictionaryapi.dev/)
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+* [Excalidraw](https://excalidraw.com/)
+* [Wordle API](https://wordle-answers-solutions.p.rapidapi.com/)
+* [Free Dictionary API](https://dictionaryapi.dev/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,29 +99,7 @@ This app allows user to use the on screen keyboard to input their guesses for th
 
 #### Whiteboard
 
-1. Use the toggle button on the left top to open it!
-   ![whiteboard-toggle-off](./READMEAssets/whiteboard-toggle-off.png)
-   or close it!
-   ![whiteboard-toggle-on](./READMEAssets/whiteboard-toggle-on.png)
-2. The initial area are divided into four areas. To add words on anywhere of the whiteboard, you could choose `letter button` in the top toolbar and tap anywhere you want on the whiteboard to insert a word or a piece of note. To delete the word, use the `eraser button` (You could erase any contents on the whiteboard, take care of that).
-   ![whiteboard-insert-word](./READMEAssets/whiteboard-insert-word.png)
-   To change color, tap the word then drag your screen down, all the attributes lie the bottom toolbar, try it!
-   ![whiteboard-set-word-color](./READMEAssets/whiteboard-set-word-color.png)
-   (If you find the bottom toolbar take up too much area of your whiteboard, click the <span>&#9776;</span> button to hide attributes setting.)
-3. If you want to add more contents on the whiteboard, tap the `hand button` on the right toolbar, drag the whiteboard and add more notes on the spare space. Also, after moving to a spare space, the initial four areas could be adjusted when you tap on them.
-4. Don't tap the `update scene` button and `reset scene` button on the top of whiteboard, or your notes will disappear. Before that, you should copy your whiteboard or save all the contents like this:
-   ![whiteboard-save](./READMEAssets/whiteboard-save.png)
-   For example, export the whiteboard as a png file:
-   ![whiteboard-export](./READMEAssets/whiteboard-export.png)
-5. Then you could try `update scene` button and `reset scene` button. I hide an egg there, which could help you work out wordle quickly!
-6. Interest is the best teacher, there are more functions on the whiteboard you could try, like the `grid mode`. Go try it!
-7. FAQ of whiteboard:
-   * > Q: I am on my phone, and I opened the whiteboard, I would like to go back, but the screen cannot be dragged to the top?
-   * A: Hold your finger on any one toolbar, then drag it! Yes, I mean the bottom toolbar, the right toolbar and the top toolbar!
-   * > Q: I am on my phone, are the whiteboard contents also responsive on my small screen?
-   * A: Whiteboard contents are not responsive, so you could use `hand button` on the right toolbar to drag your whiteboard, or check `view mode` on the top of whiteboard.
-   * > Q: Zen mode? I don't think it is different with "normal mode".
-   * A: Everyone has different state of mind, and "zen" also varies from people. Now zen mode is same as "normal" mode, and it is more or less a self-mesmerizing button. If you have some ideas about zen mode, contact us, issue or pull requests.
+See [Whiteboard Readme](./src/components/Whiteboard/Whiteboard-README.md) for more details.
 
 #### Completed game
 
@@ -149,13 +129,8 @@ This website was developed by a team of developers as below
 <!-- ROADMAP -->
 ## Future Work
 
-- [ ] Polished UI:
-      Improve design and animation
-- [ ] Countdown timer
-      Time limit to make it more advances
-- [ ] Sound:
-      Add sounds to the games to improve engagement
-- [ ] Do extensive testing to locate bugs in the code
+- [ ] Keep track of scores of players
+- [ ] Display a histogram of how many tries all users take to solve the puzzle
 
 See the [open issues](https://github.com/nrprabhav/game-player-project/issues) for a full list of proposed features (and known issues).
 
@@ -185,9 +160,10 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Thanks to Drew Hoang and Austin Imbastari for teaching and supporting us.
+* Thanks to Drew Hoang and Austin Imbastari for teaching and supporting us
 * [Fantastic-pudding](https://fantastic-pudding.vercel.app/)
 * [Bootstrap](https://getbootstrap.com/)
+* Thanks to [Shaun from Net Ninja](https://netninja.dev/) for guidance on how to do the animations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -233,4 +209,7 @@ Deployed Link: [https://beautiful-centaur-627e07.netlify.app/](https://beautiful
 [Javascript-url]: https://www.javascript.com/
 [html.com]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
 [html-url]: https://html.com/
-
+[netlify-badge]: https://img.shields.io/badge/-Netlify-orange?style=for-the-badge&logo=netlify&logoColor=white
+[netlify]: https://app.netlify.com/sites/react-bootstrap/deploys
+[axios-badge]: https://img.shields.io/badge/-Axios-orange?style=for-the-badge&logo=axios&logoColor=white
+[axios]: https://www.axios.com
